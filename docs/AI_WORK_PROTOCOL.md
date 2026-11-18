@@ -22,6 +22,51 @@ Deliver a production-grade, secure education platform for grades 1–11. Optimiz
 - Re-check live state before relying on old notes. Mark stale or uncertain facts as NOT VERIFIED.
 - Never ask the user to repeat information already present in these files or the connected project.
 
+## Product safety, security, and operational requirements
+These are mandatory acceptance requirements, not optional future polish.
+
+### Account, identity, and access security
+- Protect the Founder as the highest-privilege owner. No other role may demote, replace, disable, or delete the Founder. Enforce this in trusted server logic and database constraints/policies, not only in the interface.
+- Use strong authentication and secure account recovery for privileged accounts; require multi-factor authentication for Founder and privileged administrators where supported.
+- Enforce role-based and scope-based authorization on the server and through Supabase RLS. Test both permitted and forbidden actions for every role.
+- Prevent privilege escalation, insecure direct object references, account takeover, session theft, CSRF, XSS, SQL injection, mass assignment, rate-limit bypass, and abuse of public endpoints.
+- Validate Telegram authentication payloads server-side with the bot token kept only in server-side secrets. A Telegram username or unverified phone number alone is not identity proof. Use short-lived, single-use nonces where applicable; protect against replay.
+- Never expose service-role keys, bot tokens, signing keys, passwords, or other secrets in client bundles, source control, logs, screenshots, or chat.
+- Apply least privilege to database, storage, integrations, deployment access, and team roles. Keep privileged actions auditable.
+
+### Student and child safety / privacy
+- The platform serves minors. Collect only data needed for education; restrict access to student profiles, grades, guardian contacts, and activity records.
+- Implement guardian consent where required for minors, and define consent state, withdrawal, retention, export, and deletion workflows consistent with applicable law.
+- Prevent students from accessing other students' personal data or private teacher/admin information.
+- Provide safe reporting/moderation paths for student-teacher communication. Define who can view, respond to, escalate, and close reports.
+- Do not expose private student information in leaderboards, analytics, logs, or public pages.
+
+### Learning content quality, AI, and copyright
+- Lessons must align with the real curriculum and relevant textbooks; verify scientific accuracy, age suitability, answer correctness, and consistency with the source textbook.
+- AI-generated lessons or materials must never be published directly to children without teacher or methodologist review and approval.
+- Keep review status, reviewer identity, approval timestamp, content version, and change history for publishable learning materials.
+- Check copyright ownership and digital-use permissions before uploading, distributing, or making books/materials downloadable. Do not assume that an uploaded file is licensed for redistribution.
+- Interactive simulations must use scientifically valid models and parameters; controls must work, changes must update the simulation correctly, and collisions or physically impossible states must be prevented where relevant.
+- Support phone, computer, and other common device sizes. Verify usability and performance on mobile as well as desktop.
+- Uploaded learning materials should support approved book/file formats, with file validation, size limits, malware scanning where available, access control, and safe download handling.
+
+### Data, resilience, and operational safety
+- Back up database and critical files on a defined schedule; restrict backup access and protect backups from accidental or malicious deletion.
+- Test restoration, not just backup creation. Document recovery steps and recovery objectives before onboarding real students.
+- Use separate development, preview/staging, and production environments. Never test destructive migrations or experimental features against production.
+- Use reviewed database migrations, rollback plans, monitoring, error reporting, and deployment checks.
+- Maintain audit trails for role changes, privileged actions, content approvals, data exports/deletions, and security events. Never log secrets or unnecessary child data.
+- Define incident response for suspected account compromise, data exposure, malicious uploads, and service outages.
+- Apply rate limits, abuse prevention, input validation, secure headers, dependency/security scanning, and timely patching.
+- Do not claim compliance, security, backup readiness, or disaster recovery until the relevant controls have been implemented and tested.
+
+### Required security and quality verification
+- Threat-model each major module before release: assets, trust boundaries, attacker goals, abuse cases, mitigations, and residual risks.
+- Test authentication, authorization, RLS, storage policies, file upload/download, rate limits, input validation, and privileged role changes.
+- Include automated tests for critical access rules and regression tests for previously found vulnerabilities.
+- Review dependency alerts and security scan findings; document accepted risks with owner and rationale.
+- A successful build or deployment alone is not proof of security or functional correctness. Record actual test evidence and unresolved risks in the PR and project handoff.
+
 ## Roles: ChatGPT and Claude
 - ChatGPT: technical lead, planner, reviewer, security critic, integration coordinator, and independent verifier. Break work into small acceptance-tested tasks. Challenge weak assumptions. Do not claim completion without evidence.
 - Claude: primary implementation engineer when connected to the repository. Read the project state and this protocol before coding. Implement only the assigned task, on the specified branch. Report exact files, commit SHA, commands run, test output, and unresolved issues.
