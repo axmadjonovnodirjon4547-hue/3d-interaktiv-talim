@@ -71,12 +71,12 @@ export default function AchievementsPage() {
         <article className="ach-stat-card star-stat"><span className="ach-stat-icon"><Star fill="currentColor" /></span><div><small>Jami yulduzlar</small><b>1 250</b><em>+120 shu hafta</em></div></article>
         <article className="ach-stat-card rank-stat"><span className="ach-stat-icon"><Trophy /></span><div><small>Sinf reytingi</small><b>3-o‘rin</b><em>2 pog‘ona yuqoriga</em></div></article>
         <article className="ach-stat-card streak-stat"><span className="ach-stat-icon"><Flame fill="currentColor" /></span><div><small>O‘qish ketma-ketligi</small><b>4 kun</b><em>Maqsad: 7 kun</em></div></article>
-        <article className="ach-stat-card medal-stat"><span className="ach-stat-icon"><Award /></span><div><small>Qo‘lga kiritilgan</small><b>3 medal</b><em>6 ta yangi maqsad</em></div></article>
+        <article className="ach-stat-card medal-stat"><span className="ach-stat-icon"><Award /></span><div><small>Qo‘lga kiritilgan</small><b>1 medal</b><em>6 ta yangi maqsad</em></div></article>
       </section>
 
       <section className="ach-content-grid">
         <div className="ach-panel ach-leaderboard">
-          <div className="ach-panel-heading"><div><div className="ach-kicker">SOG‘LOM RAQOBAT</div><h2>🏆 Bilimdonlar reytingi</h2></div><span className="ach-live-pill">● HAFTALIK</span></div>
+          <div className="ach-panel-heading"><div><div className="ach-kicker">SOG‘LOM RAQOBAT</div><h2>🏆 Bilimdonlar reytingi</h2></div><span className="ach-live-pill">● {period === "week" ? "HAFTALIK" : period === "month" ? "OYLIK" : "UMUMIY"}</span></div>
           <div className="ach-controls">
             <div className="ach-tabs" role="tablist" aria-label="Reyting turi">
               <button className={board === "class" ? "active" : ""} onClick={() => setBoard("class")}>Sinf</button>
