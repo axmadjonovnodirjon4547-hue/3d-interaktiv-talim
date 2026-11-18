@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowLeft, Award, BookOpen, Crown, Flame, Gem, Medal, ShieldCheck, Sparkles, Star, Target, Trophy, Zap } from "lucide-react";
+import { ArrowLeft, Award, Flame, Gem, Medal, Sparkles, Star, Trophy } from "lucide-react";
 
 type Board = "class" | "group" | "school";
 type Learner = { name: string; grade: string; stars: number; avatar: string; trend: string };
