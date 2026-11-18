@@ -1,51 +1,27 @@
+"use client";
 import Link from "next/link";
-import { BookOpen, Compass, Flame, GraduationCap, Sparkles, Star, Trophy } from "lucide-react";
+import { useState } from "react";
+import { Compass, Flame, GraduationCap, Sparkles, Star, Trophy, Globe2, Award } from "lucide-react";
 
-const subjects = [
-  { icon: "➗", title: "Matematika", detail: "Shakllar, sonlar va mantiq", color: "violet", href: "/dars/narsalarning-xossalari", status: "Boshlash mumkin" },
-  { icon: "🔬", title: "Tabiiy fanlar", detail: "Atrofimizdagi olam", color: "mint", href: "#", status: "Tez orada" },
-  { icon: "📚", title: "Ona tili", detail: "So‘zlar va hikoyalar", color: "peach", href: "#", status: "Tez orada" },
-];
-
+type Locale = "uz" | "ru" | "en";
+const copy = {
+ uz:{nav1:"Fanlar",nav2:"Sayohat",student:"O‘quvchi",eyebrow:"BILIM OLAMIGA XUSH KELIBSAN",headline1:"Har bir dars —",headline2:"yangi sarguzasht!",intro:"O‘rgan, tajriba qil, o‘yinlarni yut va bilim yulduzlarini yig‘.",start:"Sayohatni boshlash",meta1:"Qiziqarli darslar",meta2:"Interaktiv mashqlar",meta3:"Yutuqlar",mascot:"ROBO SIZNI KUTYAPTI!",stars:"Yig‘ilgan yulduzlar",lessons:"O‘tilgan darslar",streak:"O‘rganish ketma-ketligi",day:"1 kun",choose:"O‘ZINGGA MOSINI TANLA",journey:"Bilim sayohating",grade:"1-sinf",math:"Matematika",mathDesc:"Shakllar, sonlar va mantiq",science:"Tabiiy fanlar",scienceDesc:"Atrofimizdagi olam",language:"Ona tili",languageDesc:"So‘zlar va hikoyalar",available:"Boshlash mumkin",soon:"Tez orada",topics:"Mavzularni ko‘rish",preparing:"Tayyorlanmoqda",path:"SIZNING YO‘LINGIZ",pathTitle:"Har bir yulduz — yangi bilim",pathDesc:"Mavzularni bajarganingiz sari yangi bosqichlar ochiladi.",footer:"Bilim olish — katta sarguzasht."},
+ ru:{nav1:"Предметы",nav2:"Путь",student:"Ученик",eyebrow:"ДОБРО ПОЖАЛОВАТЬ В МИР ЗНАНИЙ",headline1:"Каждый урок —",headline2:"новое приключение!",intro:"Учись, экспериментируй, проходи игры и собирай звёзды знаний.",start:"Начать путешествие",meta1:"Интересные уроки",meta2:"Интерактивные задания",meta3:"Достижения",mascot:"РОБО ЖДЁТ ТЕБЯ!",stars:"Собранные звёзды",lessons:"Пройденные уроки",streak:"Серия обучения",day:"1 день",choose:"ВЫБЕРИ СВОЁ",journey:"Твоё путешествие знаний",grade:"1 класс",math:"Математика",mathDesc:"Фигуры, числа и логика",science:"Естествознание",scienceDesc:"Мир вокруг нас",language:"Родной язык",languageDesc:"Слова и истории",available:"Можно начать",soon:"Скоро",topics:"Смотреть темы",preparing:"Готовится",path:"ТВОЙ МАРШРУТ",pathTitle:"Каждая звезда — новое знание",pathDesc:"Проходи темы, чтобы открывать новые уровни.",footer:"Учиться — большое приключение."},
+ en:{nav1:"Subjects",nav2:"Journey",student:"Student",eyebrow:"WELCOME TO THE WORLD OF KNOWLEDGE",headline1:"Every lesson is a",headline2:"new adventure!",intro:"Learn, experiment, win games and collect knowledge stars.",start:"Start the journey",meta1:"Fun lessons",meta2:"Interactive practice",meta3:"Achievements",mascot:"ROBO IS WAITING FOR YOU!",stars:"Stars collected",lessons:"Lessons completed",streak:"Learning streak",day:"1 day",choose:"CHOOSE YOUR PATH",journey:"Your learning journey",grade:"Grade 1",math:"Mathematics",mathDesc:"Shapes, numbers and logic",science:"Natural science",scienceDesc:"The world around us",language:"Language arts",languageDesc:"Words and stories",available:"Ready to start",soon:"Coming soon",topics:"Explore topics",preparing:"In preparation",path:"YOUR PATH",pathTitle:"Every star brings new knowledge",pathDesc:"Complete topics to unlock new stages.",footer:"Learning is a great adventure."}
+};
 export default function Home() {
-  return <main className="shell">
-    <header className="topbar">
-      <Link href="/" className="brand"><span className="brand-mark">✦</span><span><b>Bilim Olami</b><small>3D INTERAKTIV TA'LIM</small></span></Link>
-      <nav><a href="#fanlar">Fanlar</a><a href="#sayohat">Sayohat</a><button className="profile">👦 <span>O‘quvchi</span></button></nav>
-    </header>
-
-    <section className="welcome">
-      <div className="welcome-copy">
-        <div className="eyebrow"><Sparkles size={15}/> BILIM OLAMIGA XUSH KELIBSAN</div>
-        <h1>Har bir dars —<br/><em>yangi sarguzasht!</em></h1>
-        <p>O‘rgan, tajriba qil, o‘yinlarni yut va bilim yulduzlarini yig‘.</p>
-        <Link className="primary-btn" href="/dars/narsalarning-xossalari">Sayohatni boshlash <span>→</span></Link>
-        <div className="welcome-meta"><span>⭐ Qiziqarli darslar</span><span>🧩 Interaktiv mashqlar</span><span>🏆 Yutuqlar</span></div>
-      </div>
-      <div className="scene" aria-label="Ta'lim olami tasviri">
-        <div className="sun">☀️</div><div className="cloud c1"></div><div className="cloud c2"></div>
-        <div className="planet">🪐</div><div className="hill hill-back"></div><div className="hill hill-front"></div>
-        <div className="mascot"><div className="antenna"></div><div className="robot-face"><i></i><i></i><b></b></div><div className="robot-body">✦</div></div>
-        <span className="float-shape f1">🔵</span><span className="float-shape f2">🔺</span><span className="float-shape f3">🟨</span>
-        <div className="scene-label">ROBO SIZNI KUTYAPTI!</div>
-      </div>
-    </section>
-
-    <section className="stats-row">
-      <div className="stat"><span className="stat-icon gold"><Star/></span><div><small>Yig‘ilgan yulduzlar</small><b id="stars">0</b></div></div>
-      <div className="stat"><span className="stat-icon purple"><Trophy/></span><div><small>O‘tilgan darslar</small><b id="lessons">0</b></div></div>
-      <div className="stat"><span className="stat-icon orange"><Flame/></span><div><small>O‘rganish ketma-ketligi</small><b>1 kun</b></div></div>
-    </section>
-
-    <section className="section" id="fanlar">
-      <div className="section-heading"><div><div className="eyebrow">O‘ZINGGA MOSINI TANLA</div><h2>Bilim sayohating</h2></div><span className="grade-pill"><GraduationCap size={16}/> 1-sinf</span></div>
-      <div className="subject-grid">{subjects.map(s=><article className={`subject-card ${s.color}`} key={s.title}>
-        <div className="subject-icon">{s.icon}</div><span className="subject-status">{s.status}</span><h3>{s.title}</h3><p>{s.detail}</p>
-        {s.href !== "#" ? <Link href={s.href} className="card-link">Mavzularni ko‘rish <span>→</span></Link> : <span className="card-link disabled">Tayyorlanmoqda</span>}
-      </article>)}</div>
-    </section>
-
-    <section className="journey" id="sayohat"><div><div className="eyebrow"><Compass size={14}/> SIZNING YO‘LINGIZ</div><h2>Har bir yulduz — yangi bilim</h2><p>Mavzularni bajarganingiz sari yangi bosqichlar ochiladi.</p></div><div className="journey-path"><span className="path-node done">★</span><span className="path-line"></span><span className="path-node current">2</span><span className="path-line"></span><span className="path-node">3</span><span className="path-line"></span><span className="path-node">🏆</span></div></section>
-    <footer><span>✦ Bilim Olami</span><span>Bilim olish — katta sarguzasht.</span></footer>
-  </main>;
+ const [locale,setLocale]=useState<Locale>("uz"); const t=copy[locale];
+ const subjects=[{icon:"➗",title:t.math,detail:t.mathDesc,color:"violet",href:"/dars/narsalarning-xossalari",status:t.available},{icon:"🔬",title:t.science,detail:t.scienceDesc,color:"mint",href:"#",status:t.soon},{icon:"📚",title:t.language,detail:t.languageDesc,color:"peach",href:"#",status:t.soon}];
+ return <main className="shell">
+  <header className="topbar"><Link href="/" className="brand"><span className="brand-mark">✦</span><span><b>3D Interaktiv Ta’lim</b><small>LEARN · EXPLORE · GROW</small></span></Link>
+   <nav><a href="#fanlar">{t.nav1}</a><a href="#sayohat">{t.nav2}</a><Link href="/yutuqlar" className="ach-nav-link"><Award size={15}/> Yutuqlar</Link><Link href="/kabinet" className="ach-nav-link">Kabinet</Link><div className="locale-switch" aria-label="Language selector"><Globe2 size={15}/>{(["uz","ru","en"] as Locale[]).map(l=><button key={l} className={locale===l?"active":""} onClick={()=>setLocale(l)}>{l.toUpperCase()}</button>)}</div><Link href="/kabinet" className="profile">👦 <span>{t.student}</span></Link></nav>
+  </header>
+  <section className="welcome"><div className="welcome-copy"><div className="eyebrow"><Sparkles size={15}/> {t.eyebrow}</div><h1>{t.headline1}<br/><em>{t.headline2}</em></h1><p>{t.intro}</p><Link className="primary-btn" href="/dars/narsalarning-xossalari">{t.start} <span>→</span></Link><div className="welcome-meta"><span>⭐ {t.meta1}</span><span>🧩 {t.meta2}</span><span>🏆 {t.meta3}</span></div></div>
+   <div className="scene" aria-label="3D learning world"><div className="sun">☀️</div><div className="cloud c1"></div><div className="cloud c2"></div><div className="planet">🪐</div><div className="hill hill-back"></div><div className="hill hill-front"></div><div className="mascot"><div className="antenna"></div><div className="robot-face"><i></i><i></i><b></b></div><div className="robot-body">✦</div></div><span className="float-shape f1">🔵</span><span className="float-shape f2">🔺</span><span className="float-shape f3">🟨</span><div className="scene-label">{t.mascot}</div></div>
+  </section>
+  <section className="stats-row"><div className="stat"><span className="stat-icon gold"><Star/></span><div><small>{t.stars}</small><b id="stars">0</b></div></div><div className="stat"><span className="stat-icon purple"><Trophy/></span><div><small>{t.lessons}</small><b id="lessons">0</b></div></div><div className="stat"><span className="stat-icon orange"><Flame/></span><div><small>{t.streak}</small><b>{t.day}</b></div></div></section>
+  <section className="section" id="fanlar"><div className="section-heading"><div><div className="eyebrow">{t.choose}</div><h2>{t.journey}</h2></div><span className="grade-pill"><GraduationCap size={16}/> {t.grade}</span></div><div className="subject-grid">{subjects.map(s=><article className={`subject-card ${s.color}`} key={s.title}><div className="subject-icon">{s.icon}</div><span className="subject-status">{s.status}</span><h3>{s.title}</h3><p>{s.detail}</p>{s.href!=="#"?<Link href={s.href} className="card-link">{t.topics} <span>→</span></Link>:<span className="card-link disabled">{t.preparing}</span>}</article>)}</div></section>
+  <section className="journey" id="sayohat"><div><div className="eyebrow"><Compass size={14}/> {t.path}</div><h2>{t.pathTitle}</h2><p>{t.pathDesc}</p></div><div className="journey-path"><span className="path-node done">★</span><span className="path-line"></span><span className="path-node current">2</span><span className="path-line"></span><span className="path-node">3</span><span className="path-line"></span><span className="path-node">🏆</span></div></section>
+  <footer><span>✦ 3D Interaktiv Ta’lim</span><span>{t.footer}</span></footer>
+ </main>;
 }
