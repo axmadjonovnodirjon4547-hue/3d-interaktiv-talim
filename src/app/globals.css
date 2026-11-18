@@ -21,3 +21,12 @@ button,a{-webkit-tap-highlight-color:transparent}
 .subject-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card)}
 @media(max-width:760px){.topbar nav{gap:8px}.locale-switch{order:2}.profile{order:3}.locale-switch button{padding:5px}.brand b{font-size:14px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* Lesson language selector */
+.lesson-actions{display:flex;align-items:center;gap:14px}
+.language-switch{display:flex;align-items:center;gap:3px;padding:4px;border:1px solid var(--line);border-radius:11px;background:#fff}
+.language-switch button{border:0;background:transparent;color:#8390a6;padding:6px 8px;border-radius:8px;font-size:10px;font-weight:900}
+.language-switch button.active{background:#edf0ff;color:#536df0}
+.robo-card>div:nth-child(2){text-align:center}
+@media(max-width:760px){.lesson-top{gap:8px;flex-wrap:wrap}.lesson-brand{order:3;width:100%;text-align:center}.lesson-actions{gap:7px}.language-switch button{padding:5px 6px}}
