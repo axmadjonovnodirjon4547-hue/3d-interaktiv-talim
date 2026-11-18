@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowLeft, Award, Flame, Gem, Medal, Sparkles, Star, Trophy } from "lucide-react";
+import { DEMO_LEADERBOARDS, GAMIFICATION_SETTINGS, MEDAL_DEFINITIONS, type Board } from "@/config/gamification";
 
 type Board = "class" | "group" | "school";
 type Learner = { name: string; grade: string; stars: number; avatar: string; trend: string };
@@ -41,7 +42,9 @@ export default function AchievementsPage() {
   const [board, setBoard] = useState<Board>("class");
   const [period, setPeriod] = useState<"week" | "month" | "all">("week");
   const [showAll, setShowAll] = useState(false);
-  const leaders = useMemo(() => boards[board], [board]);
+  const leaders = useMemo(() => DEMO_LEADERBOARDS[board], [board]);
+  const student = GAMIFICATION_SETTINGS.demoStudent;
+  const medals = MEDAL_DEFINITIONS;
 
   return (
     <main className="ach-shell">
@@ -68,10 +71,10 @@ export default function AchievementsPage() {
       </section>
 
       <section className="ach-summary">
-        <article className="ach-stat-card star-stat"><span className="ach-stat-icon"><Star fill="currentColor" /></span><div><small>Jami yulduzlar</small><b>1 250</b><em>+120 shu hafta</em></div></article>
-        <article className="ach-stat-card rank-stat"><span className="ach-stat-icon"><Trophy /></span><div><small>Sinf reytingi</small><b>3-o‘rin</b><em>2 pog‘ona yuqoriga</em></div></article>
-        <article className="ach-stat-card streak-stat"><span className="ach-stat-icon"><Flame fill="currentColor" /></span><div><small>O‘qish ketma-ketligi</small><b>4 kun</b><em>Maqsad: 7 kun</em></div></article>
-        <article className="ach-stat-card medal-stat"><span className="ach-stat-icon"><Award /></span><div><small>Qo‘lga kiritilgan</small><b>1 medal</b><em>6 ta yangi maqsad</em></div></article>
+        <article className="ach-stat-card star-stat"><span className="ach-stat-icon"><Star fill="currentColor" /></span><div><small>Jami yulduzlar</small><b>{student.totalStars.toLocaleString("uz-UZ")}</b><em>+{student.weeklyStars} shu hafta</em></div></article>
+        <article className="ach-stat-card rank-stat"><span className="ach-stat-icon"><Trophy /></span><div><small>Sinf reytingi</small><b>{student.classRank}-o‘rin</b><em>{student.rankChange} pog‘ona yuqoriga</em></div></article>
+        <article className="ach-stat-card streak-stat"><span className="ach-stat-icon"><Flame fill="currentColor" /></span><div><small>O‘qish ketma-ketligi</small><b>{student.streakDays} kun</b><em>Maqsad: 7 kun</em></div></article>
+        <article className="ach-stat-card medal-stat"><span className="ach-stat-icon"><Award /></span><div><small>Qo‘lga kiritilgan</small><b>{student.earnedMedals} medal</b><em>{medals.length} ta maqsad</em></div></article>
       </section>
 
       <section className="ach-content-grid">
@@ -106,15 +109,15 @@ export default function AchievementsPage() {
           <div className="ach-quest-art"><div className="quest-glow" /><span>🧭</span><i>✦</i></div>
           <h3>Bilim izlovchi</h3>
           <p>Bugun yana 2 ta mashqni bajargin va yangi yulduzlarni qo‘lga kirit!</p>
-          <div className="ach-progress-label"><span>Kunlik maqsad</span><b>2/4</b></div>
-          <div className="ach-progress"><span style={{ width: "50%" }} /></div>
-          <div className="ach-reward"><span>🎁</span><div><b>Mukofot</b><small>+30 yulduz</small></div></div>
+          <div className="ach-progress-label"><span>Kunlik maqsad</span><b>{student.dailyMissionDone}/{student.dailyMissionTotal}</b></div>
+          <div className="ach-progress"><span style={{ width: `${(student.dailyMissionDone / student.dailyMissionTotal) * 100}%` }} /></div>
+          <div className="ach-reward"><span>🎁</span><div><b>Mukofot</b><small>+{GAMIFICATION_SETTINGS.rewards.dailyMission} yulduz</small></div></div>
           <Link href="/dars/narsalarning-xossalari" className="ach-quest-btn">Missiyani davom ettir <span>→</span></Link>
         </aside>
       </section>
 
       <section className="ach-medals-section" id="medallar">
-        <div className="ach-section-title"><div><div className="ach-kicker">SENING YUTUQLARING</div><h2>Medallar galereyasi</h2><p>Har bir medal mehnating va bilimingning belgisi.</p></div><div className="ach-medal-count"><Medal size={18} /> 1 / 6 qo‘lga kiritildi</div></div>
+        <div className="ach-section-title"><div><div className="ach-kicker">SENING YUTUQLARING</div><h2>Medallar galereyasi</h2><p>Har bir medal mehnating va bilimingning belgisi.</p></div><div className="ach-medal-count"><Medal size={18} /> {student.earnedMedals} / {medals.length} qo‘lga kiritildi</div></div>
         <div className="ach-medal-grid">
           {medals.slice(0, showAll ? medals.length : 4).map(medal => (
             <article className={`ach-medal-card ${medal.earned ? "earned" : "locked"}`} key={medal.name}>
@@ -128,7 +131,7 @@ export default function AchievementsPage() {
 
       <section className="ach-level-panel">
         <div className="ach-level-emblem">👑</div>
-        <div className="ach-level-copy"><div className="ach-kicker">SENING DARAJANG</div><h2>4-daraja · Zukko</h2><p>Keyingi daraja: Ekspert. Yana 250 yulduz yig‘!</p><div className="ach-level-bar"><span /></div><small>1 250 / 1 500 ⭐</small></div>
+        <div className="ach-level-copy"><div className="ach-kicker">SENING DARAJANG</div><h2>4-daraja · Zukko</h2><p>Keyingi daraja: Ekspert. Yana {Math.max(0, student.nextLevelAt - student.totalStars)} yulduz yig‘!</p><div className="ach-level-bar"><span style={{ width: `${Math.min(100, (student.totalStars / student.nextLevelAt) * 100)}%` }} /></div><small>{student.totalStars.toLocaleString("uz-UZ")} / {student.nextLevelAt.toLocaleString("uz-UZ")} ⭐</small></div>
         <div className="ach-level-next"><Gem size={28} /><b>Ekspert</b><small>Keyingi bosqich</small></div>
       </section>
 
