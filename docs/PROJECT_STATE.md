@@ -82,6 +82,7 @@ Role permissions must be enforced server-side and by database policies, never on
 - Do not change production data or settings without explicit approval.
 
 ## Working protocol for every new session
+Read `docs/AI_WORK_PROTOCOL.md` for the full ChatGPT/Claude collaboration, token-discipline, engineering, and handoff rules.
 1. Read this file first and inspect current GitHub branches, PRs, CI/deploy status, and relevant database state.
 2. Confirm the active branch and exact task before editing.
 3. Work in a focused feature branch. Never commit directly to main.
