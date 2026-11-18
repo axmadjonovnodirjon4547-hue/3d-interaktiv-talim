@@ -5,7 +5,7 @@ This project is updated continuously. Do not make unreviewed changes directly on
 ## Change lifecycle
 1. Create a focused branch from the latest stable branch.
 2. Make one logical change per commit.
-3. Run the local checks: `npm ci`, `npm run lint`, and `npm run build`.
+3. Run the local checks: `npm ci`, `npx tsc --noEmit`, and `npm run build`.
 4. Open or update a pull request. Vercel Preview is the review environment.
 5. Check desktop and mobile layouts, primary interactions, console/build errors, and accessibility basics.
 6. Merge only after checks pass and the change is reviewed.
