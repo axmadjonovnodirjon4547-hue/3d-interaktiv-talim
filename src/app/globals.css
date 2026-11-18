@@ -81,3 +81,48 @@ button,a{-webkit-tap-highlight-color:transparent}
 .sd-week-panel{display:flex;align-items:center;gap:13px;margin-top:14px;padding:15px 17px;border:1px solid white;border-radius:17px;background:linear-gradient(100deg,#fff9e8,#fff)}.sd-week-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#fff0ca;color:#d4a02b}.sd-week-panel b{font-size:12px}.sd-week-panel p{margin:3px 0 0;color:#8994a8;font-size:10px}.sd-week-panel>a{margin-left:auto;color:#7b88d8}.sd-bottom-nav{display:none}.sd-footer{display:flex;justify-content:space-between;padding:22px 4px;color:#a0a9b8;font-size:10px}
 @media(max-width:760px){.student-dashboard{padding:12px 12px 100px}.sd-header{top:6px;padding:9px 11px}.sd-brand b{font-size:12px}.sd-brand-mark{width:36px;height:36px}.sd-header-actions{gap:9px}.sd-header-link{font-size:10px}.sd-avatar{width:34px;height:34px}.sd-welcome{grid-template-columns:1fr;padding:20px;gap:15px}.sd-welcome h1{font-size:38px}.sd-hero-art{min-height:205px}.sd-stats{grid-template-columns:1fr;gap:8px;margin-bottom:23px}.sd-stats article{padding:10px 13px}.sd-stats b{font-size:17px}.sd-course-grid{grid-template-columns:1fr}.sd-course-card{padding:15px}.sd-lower-grid{grid-template-columns:1fr}.sd-panel{min-height:160px}.sd-grade{font-size:9px}.sd-section-title h2{font-size:23px}.sd-bottom-nav{position:fixed;z-index:30;left:12px;right:12px;bottom:10px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:7px;border:1px solid #ffffff25;border-radius:22px;background:#25252b;box-shadow:0 10px 30px #10101855}.sd-bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:55px;border-radius:16px;color:#9d9da5;font-size:9px;font-weight:800}.sd-bottom-nav a.active{background:linear-gradient(135deg,#f05a36,#df3c23);color:white;box-shadow:0 5px 13px #d9432e55}.sd-footer{font-size:9px;padding-bottom:10px}.sd-footer span:last-child{display:none}}
 @media(prefers-reduced-motion:reduce){.sd-robot,.sd-art-star{animation:none}}
+
+
+/* Lesson readability and refreshed star reward UI */
+.lesson-shell{max-width:1240px;padding:26px 28px 42px}
+.lesson-top{padding:15px 20px}
+.back{font-size:15px}
+.lesson-brand{font-size:16px}
+.lesson-score{gap:9px;padding:7px 13px;border:1px solid #f3e4b4;border-radius:15px;background:linear-gradient(135deg,#fff9e7,#fff1c7);color:#8e6415;font-size:18px;box-shadow:0 5px 14px #d7aa3430}
+.lesson-score-star{display:grid;place-items:center;width:31px;height:31px;border-radius:11px;background:linear-gradient(145deg,#ffe58b,#f5b92e);color:#fff;border:1px solid #fff0b4;box-shadow:inset 0 1px 2px #fff9,0 3px 7px #c58b2840}
+.lesson-score b{font-size:18px;font-weight:1000;min-width:18px}
+.lesson-progress{height:9px;margin:17px 2px 30px}
+.lesson-heading{margin:15px 0 30px}
+.lesson-heading .eyebrow{font-size:12px;letter-spacing:1.3px}
+.lesson-heading h1{font-size:clamp(36px,4vw,46px);line-height:1.12}
+.lesson-heading p{font-size:17px;line-height:1.65;max-width:760px;margin:10px auto}
+.lesson-layout{grid-template-columns:minmax(0,1fr) 320px;gap:22px;align-items:stretch}
+.lesson-stage{padding:26px;border-radius:26px}
+.intro-scene{height:370px}
+.intro-caption{font-size:17px}
+.start-btn{font-size:16px;padding:15px 22px}
+.task-view{max-width:760px;padding:20px 8px}
+.task-kicker{font-size:13px;letter-spacing:1.2px}
+.task-visual{font-size:58px;margin:28px 0 18px}
+.task-view h2{font-size:clamp(24px,2.5vw,30px);line-height:1.35}
+.choice-grid{gap:13px;margin:24px 0}
+.choice{padding:17px 19px;border-radius:17px;font-size:17px;line-height:1.4}
+.primary-btn{font-size:15px;padding:15px 21px}
+.answer-feedback{padding:16px;font-size:16px}
+.answer-feedback small{font-size:14px;line-height:1.55}
+.robo-card{padding:24px;border-radius:25px;align-self:stretch}
+.robo-avatar{font-size:76px;margin:5px 0 12px}
+.robo-card>div:nth-child(2)>b{font-size:23px}
+.robo-card>div:nth-child(2)>small{font-size:15px;margin-top:4px}
+.robo-speech{padding:18px;margin:22px 0;font-size:17px;line-height:1.65;border:1px solid #edf0fb;border-radius:18px}
+.robo-stars{display:flex;align-items:center;gap:10px;padding:15px 0;border-top:1px solid #e9eafa}
+.robo-stars-label{display:flex;align-items:center;gap:11px}
+.robo-star-medallion{display:grid;place-items:center;width:46px;height:46px;border:3px solid #fff0b8;border-radius:15px;background:linear-gradient(145deg,#ffe88d,#f4b82d);color:#fff;box-shadow:0 5px 13px #d7a62c45,inset 0 1px 2px #fff9}
+.robo-stars-label strong,.robo-stars-label small{display:block}
+.robo-stars-label strong{font-size:17px;color:#394866}
+.robo-stars-label small{margin-top:3px;font-size:11px;color:#929db1}
+.robo-stars-total{margin-left:auto;display:grid;place-items:center;min-width:48px;height:42px;padding:0 12px;border-radius:13px;background:#fff5d9;color:#946812;font-size:20px;font-weight:1000}
+.reset-btn{gap:8px;padding:10px 0;font-size:14px}
+.lesson-footer{font-size:13px;padding:24px 5px}
+@media(max-width:900px){.lesson-layout{grid-template-columns:1fr}.robo-card{display:grid;grid-template-columns:74px 1fr;column-gap:15px;align-items:center}.robo-avatar{grid-row:1/3;margin:0;font-size:60px}.robo-card>div:nth-child(2){text-align:left}.robo-speech{grid-column:1/-1;margin:15px 0}.robo-stars,.reset-btn{grid-column:1/-1}}
+@media(max-width:600px){.lesson-shell{padding:12px 12px 28px}.lesson-top{gap:9px;padding:10px 12px;flex-wrap:wrap}.lesson-brand{font-size:12px;order:3;width:100%;text-align:center}.back{font-size:12px}.lesson-score{padding:4px 8px}.lesson-score-star{width:26px;height:26px}.lesson-heading{margin:12px 0 20px}.lesson-heading h1{font-size:29px}.lesson-heading p{font-size:15px}.lesson-heading .eyebrow{font-size:10px}.lesson-stage{padding:13px}.intro-scene{height:270px}.intro-caption{font-size:13px}.task-view{padding:10px 2px}.task-visual{font-size:43px}.task-view h2{font-size:22px}.choice{font-size:15px;padding:14px}.robo-card{padding:16px}.robo-card>div:nth-child(2)>b{font-size:20px}.robo-speech{font-size:15px;padding:14px}.robo-stars-label strong{font-size:15px}.lesson-footer{font-size:10px;gap:8px;flex-wrap:wrap}}
