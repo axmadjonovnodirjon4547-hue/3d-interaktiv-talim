@@ -135,7 +135,7 @@ export default function LessonClient() {
         <div className="language-switch" aria-label="Language">
           {(["uz", "ru", "en"] as Language[]).map(code => <button key={code} type="button" onClick={() => setLanguage(code)} aria-pressed={language === code} className={language === code ? "active" : ""}>{code.toUpperCase()}</button>)}
         </div>
-        <div className="lesson-score"><Star fill="#f4bd39" stroke="#f4bd39"/> {stars}</div>
+        <div className="lesson-score"><span className="lesson-score-star"><Star size={18} fill="currentColor" stroke="currentColor"/></span><b>{stars}</b></div>
       </div>
     </header>
     <div className="lesson-progress"><span style={{ width: `${Math.min(100, step / (tasks.length + 1) * 100)}%` }}/></div>
@@ -150,7 +150,7 @@ export default function LessonClient() {
         </div>}
         {step === 0 && <button className="primary-btn start-btn" onClick={() => setStep(1)}>{t.start} <ChevronRight size={17}/></button>}
       </article>
-      <aside className="robo-card"><div className="robo-avatar">🤖</div><div><b>{t.friend}</b><small>{t.helper}</small></div><div className="robo-speech">{step === 0 ? t.greeting : complete ? t.celebrate : checked ? (correct ? t.praise : t.encourage) : t.hint}</div><div className="robo-stars"><span>⭐ {t.stars}</span><b>{stars}</b></div><button className="reset-btn" onClick={restart}><RotateCcw size={14}/> {t.reset}</button></aside>
+      <aside className="robo-card"><div className="robo-avatar">🤖</div><div><b>{t.friend}</b><small>{t.helper}</small></div><div className="robo-speech">{step === 0 ? t.greeting : complete ? t.celebrate : checked ? (correct ? t.praise : t.encourage) : t.hint}</div><div className="robo-stars"><span className="robo-stars-label"><span className="robo-star-medallion"><Star size={21} fill="currentColor" stroke="currentColor"/></span><span><strong>{t.stars}</strong><small>Har bir to‘g‘ri javob uchun</small></span></span><b className="robo-stars-total">{stars}</b></div><button className="reset-btn" onClick={restart}><RotateCcw size={14}/> {t.reset}</button></aside>
     </section>
     <footer className="lesson-footer"><span>✦ {t.brand}</span><span>{t.footer}</span></footer>
   </main>;
