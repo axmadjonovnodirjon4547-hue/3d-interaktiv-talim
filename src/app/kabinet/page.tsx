@@ -59,7 +59,7 @@ export default function StudentDashboard() {
       </section>
 
       <section className="sd-lower-grid">
-        <article className="sd-panel sd-ai-panel"><div className="sd-panel-icon"><Bot size={23}/></div><div className="sd-eyebrow">DOIMIY YORDAMCHI</div><h2>AI ustoz</h2><p>Murakkab mavzularni tushunish va savollaringga javob topish uchun AI ustoz bo‘limi.</p><span className="sd-coming-soon">AI xizmati keyingi bosqichda ulanadi</span></article>
+        <article id="ai-ustoz" className="sd-panel sd-ai-panel"><div className="sd-panel-icon"><Bot size={23}/></div><div className="sd-eyebrow">DOIMIY YORDAMCHI</div><h2>AI ustoz</h2><p>Murakkab mavzularni tushunish va savollaringga javob topish uchun AI ustoz bo‘limi.</p><span className="sd-coming-soon">AI xizmati keyingi bosqichda ulanadi</span></article>
         <article className="sd-panel sd-community-panel"><div className="sd-panel-icon"><Users size={23}/></div><div className="sd-eyebrow">BILIMDONLAR JAMOASI</div><h2>Yutuqlar va reyting</h2><p>Medallaring, o‘qish natijalaring va bilimdonlar reytingini kuzat.</p><Link href="/yutuqlar" className="sd-secondary">Yutuqlarni ko‘r <ChevronRight size={16}/></Link></article>
       </section>
 
