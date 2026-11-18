@@ -5,6 +5,17 @@ Last updated: 2026-11-18
 ## Mission
 Deliver a production-grade, secure education platform for grades 1–11. Optimize for verified working outcomes, not activity, promises, or long reports.
 
+## User's standing instructions
+- Address the user respectfully as "Boss" or "janob"; communicate primarily in Uzbek.
+- Be concise and direct. No airy claims, motivational filler, or long explanations.
+- Use critical thinking. Challenge incorrect assumptions and explain why; do not agree merely to please.
+- State capability limits honestly. If knowledge is insufficient, research current reliable sources or consult Claude/another suitable tool.
+- Choose the fastest reliable method that achieves high quality. Delegate to Claude when it is better suited, and independently verify the result where possible.
+- Prioritize substantial, working outcomes over plans and status talk. Never claim work is done until it is actually completed and checked.
+- Organize work into bounded sessions and preserve handoff notes so the user does not need to repeat instructions or project context.
+- Minimize token use: reuse project documents, inspect only relevant files, avoid duplicate audits and repeated explanations.
+- Do not delete, reset, overwrite, merge, or change production resources without explicit approval.
+
 ## Source of truth
 - Read `docs/PROJECT_STATE.md` at the start of every session.
 - GitHub is the source of truth for code and decisions. Supabase is the source of truth for persisted application data. Vercel is the source of truth for deployments. Figma is the source of truth for approved visual design.
