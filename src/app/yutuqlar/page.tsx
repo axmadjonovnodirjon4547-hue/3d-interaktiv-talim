@@ -5,39 +5,6 @@ import { useMemo, useState } from "react";
 import { ArrowLeft, Award, Flame, Gem, Medal, Sparkles, Star, Trophy } from "lucide-react";
 import { DEMO_LEADERBOARDS, GAMIFICATION_SETTINGS, MEDAL_DEFINITIONS, type Board } from "@/config/gamification";
 
-type Board = "class" | "group" | "school";
-type Learner = { name: string; grade: string; stars: number; avatar: string; trend: string };
-
-const boards: Record<Board, Learner[]> = {
-  class: [
-    { name: "Madina Karimova", grade: "5-A sinf", stars: 1280, avatar: "👩🏻‍🚀", trend: "+120" },
-    { name: "Ali Valiyev", grade: "5-A sinf", stars: 1160, avatar: "🧑🏻‍🔬", trend: "+95" },
-    { name: "Aziza Rahimova", grade: "5-A sinf", stars: 1040, avatar: "👩🏻‍🎨", trend: "+80" },
-    { name: "Sardor Ismoilov", grade: "5-A sinf", stars: 920, avatar: "🧑🏻‍🚀", trend: "+65" },
-  ],
-  group: [
-    { name: "Zukkolar", grade: "5-A guruh", stars: 4820, avatar: "🚀", trend: "+340" },
-    { name: "Bilimdonlar", grade: "5-B guruh", stars: 4510, avatar: "🪐", trend: "+290" },
-    { name: "Kashfiyotchilar", grade: "5-C guruh", stars: 4190, avatar: "🔭", trend: "+260" },
-    { name: "Yulduzlar", grade: "5-D guruh", stars: 3860, avatar: "✨", trend: "+210" },
-  ],
-  school: [
-    { name: "Registon akademiyasi", grade: "Toshkent", stars: 28450, avatar: "🏛️", trend: "+1 820" },
-    { name: "Bilim maskani", grade: "Samarqand", stars: 26720, avatar: "🏰", trend: "+1 640" },
-    { name: "Ziyo maktabi", grade: "Farg‘ona", stars: 24980, avatar: "🎓", trend: "+1 410" },
-    { name: "Kelajak maktabi", grade: "Andijon", stars: 23100, avatar: "🌟", trend: "+1 280" },
-  ],
-};
-
-const medals = [
-  { name: "Birinchi qadam", desc: "Birinchi darsni tugat", icon: "🚀", tone: "blue", progress: "1/1", earned: true },
-  { name: "Aniq nishon", desc: "5 ta testni xatosiz yech", icon: "🎯", tone: "gold", progress: "3/5", earned: false },
-  { name: "Bilim izlovchi", desc: "10 ta darsni yakunla", icon: "📚", tone: "violet", progress: "7/10", earned: false },
-  { name: "Tinimsiz", desc: "7 kun ketma-ket o‘qi", icon: "🔥", tone: "orange", progress: "4/7", earned: false },
-  { name: "Fan ustasi", desc: "Bir fandagi barcha mavzularni tugat", icon: "🧠", tone: "mint", progress: "2/8", earned: false },
-  { name: "Chempion", desc: "Haftalik reytingda top-3 ga kir", icon: "👑", tone: "pink", progress: "Top 10", earned: false },
-];
-
 export default function AchievementsPage() {
   const [board, setBoard] = useState<Board>("class");
   const [period, setPeriod] = useState<"week" | "month" | "all">("week");
